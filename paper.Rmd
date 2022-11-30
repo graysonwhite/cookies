@@ -1,0 +1,27 @@
+---
+title: "Cookies!"
+author: "Benjamin Agyei, Christian Miller, Elliot Shannon, Grayson White"
+date: '2022-12-07'
+output: pdf_document
+fontsize: 12pt
+geometry: margin=1in
+spacing: double
+fig_caption: yes
+indent: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gglm)
+```
+
+## Introduction
+
+## Methods
+
+## Results
+
+## Discussion
+
+## Conclusion
