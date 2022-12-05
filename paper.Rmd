@@ -11,9 +11,12 @@ indent: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(gglm)
+library(patchwork)
+
+cookies <- readRDS("data/cookies.rds")
 ```
 
 ## Introduction
@@ -21,6 +24,42 @@ library(gglm)
 ## Methods
 
 ## Results
+
+Once we had baked and measured all of our cookies, it was time to begin modeling with our data. Before diving deep into modeling, we first took the important step of exploratory data analysis. To get a good sense of our data, we plotted each explanatory variable with the response variable. Figure X shows these relationships. 
+```{r eda_plots, fig.cap="Butter (grams), flour (grams), and time in oven (minutes) plotted against cookie diameter (inches)."}
+p1 <- ggplot(cookies) + 
+  geom_point(aes(x = butter_g, y = diameter_in), alpha = 0.5) +
+  theme_bw() +
+  labs(x = "Butter (grams)",
+       y = "Cookie Diameter (inches)")
+
+p2 <- ggplot(cookies) + 
+  geom_point(aes(x = flour_g, y = diameter_in)) +
+  theme_bw() +
+  labs(x = "Flour (grams)",
+       y = "Cookie Diameter (inches)")
+
+p3 <- ggplot(cookies) + 
+  geom_point(aes(x = time_in_oven_min, y = diameter_in)) +
+  theme_bw() +
+  labs(x = "Time in Oven (minutes)",
+       y = "Cookie Diameter (inches)")
+
+(p1 + p2) / p3
+```
+Initially, we see that the relationship between cookie diameter and butter is moderate in strength and positive. The linearity of this relationship needs to be examined further, but generally the trend is somewhat linear. Further, the relationship between cookie diameter and flour seems to be even stronger, but now a negative relationship. This tells us that as we increase the flour in a cookie, we would expect the cookie diameter to decrease (and of course, the converse for butter). The relationship between cookie diameter and time in oven is extremely hard to discern, and from Figure X we expect time in oven to have a very minimal effect on cookie diameter, if any. 
+
+Now, we move to modeling. We first fit the candidate model described in the Introduction, 
+$$
+y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \beta_3 x_{3i} + \epsilon_i
+$$
+where $x_{1i}$ corresponds to the $i$th observation of flour, $x_{2i}$ the $i$th observation of butter, and $x_{3i}$ the $i$th observation of time in oven. We fit the model in R and assess the model via the quartet of diagnostic plots provided by the `gglm` R package, and by metrics from the model summary. Figure XX displays the model diagnostic plot quartet. 
+```{r}
+m1 <- lm(diameter_in ~ butter_g + flour_g + time_in_oven_min, cookies)
+gglm(m1)
+```
+
+
 
 ## Discussion
 
