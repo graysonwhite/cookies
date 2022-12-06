@@ -187,9 +187,51 @@ gglm(m3, theme = theme_bw()) +
 **Figure 4.** Model diagnostics for Model 3, highlighting little to no pattern in the residual vs. fitted plot and improved model fit overall. 
 \newline
 
-We see that any discernible pattern in the residual vs fitted plot is gone, and all other diagnostic plots look satisfactory. All variables included in Model 3 were significant at the 0.05 level, and the $R^2$ value for Model 3 is 0.937 with an adjusted $R^2$ of 0.932. These metrics tell us that the model fit is quite good. The estimated coefficient value for $\beta_6$ of `r round(coefficients(m3)[4], digits = 2)` seems reasonable, as cookie diameter is expected to increase as the ratio of butter to flour increases. 
+We see that any discernible pattern in the residual vs fitted plot is gone, and all other diagnostic plots look satisfactory. All variables included in Model 3 were significant at the 0.05 level, and the $R^2$ value for Model 3 is 0.937 with an adjusted $R^2$ of 0.932. These metrics tell us that the model fit is quite good. The estimated coefficient value for $\beta_6$ of `r round(coefficients(m3)[4], digits = 2)` seems reasonable, as cookie diameter is expected to increase as the ratio of butter to flour increases. Fitted coefficient values, standard errors, and model fit metrics for each candidate model are provided in Table 2. 
+\newpage
+\noindent \textbf{Table 2:} Model Fit Results for Models 1-3
+\begin{table}[!htbp] \centering 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{3}{c}{diameter\_in} \\ 
+\\[-1.8ex] & (1) & (2) & (3)\\ 
+\hline \\[-1.8ex] 
+ butter\_g & 0.019 & 0.057 & $-$0.039 \\ 
+  & (0.004) & (0.032) & (0.006) \\ 
+  & & & \\ 
+ flour\_g & $-$0.031 & 0.004 & 0.010 \\ 
+  & (0.002) & (0.008) & (0.004) \\ 
+  & & & \\ 
+ time\_in\_oven\_min & 0.013 &  &  \\ 
+  & (0.027) &  &  \\ 
+  & & & \\ 
+ f\_times\_b &  & $-$0.001 &  \\ 
+  &  & (0.0002) &  \\ 
+  & & & \\ 
+ butter\_sq &  & 0.0001 &  \\ 
+  &  & (0.0004) &  \\ 
+  & & & \\ 
+ bf\_ratio &  &  & 3.201 \\ 
+  &  &  & (0.313) \\ 
+  & & & \\ 
+ Constant & 3.598 & 1.835 & 1.247 \\ 
+  & (0.349) & (0.754) & (0.271) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 54 & 54 & 54 \\ 
+R$^{2}$ & 0.802 & 0.864 & 0.936 \\ 
+Adjusted R$^{2}$ & 0.790 & 0.853 & 0.932 \\ 
+Residual Std. Error & 0.296 (df = 50) & 0.248 (df = 49) & 0.169 (df = 50) \\ 
+F Statistic & 67.511$^{***}$ (df = 3; 50) & 77.593$^{***}$ (df = 4; 49) & 242.364$^{***}$ (df = 3; 50) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
 
-
+\newpage
 ## Discussion
 
 The results of this experiment clearly suggest that variables such as amounts of flour and butter used significantly affect the final diameter of baked cookies, while other factors such as baking time have less significant influence. By comparing all factor level combinations, the controlled experiment conducted here provides opportunities to explore potential interactions between variables that may better explain the observed response in cookie diameter. To this end, the ratio of flour and butter used was considered, and was determined to provide increased explanatory power regarding cookie diameter. This significant positive interaction likely stems from the unique physical properties of both ingredients, which each have opposing effects on final cookie diameter. Specifically, flour acts as a binding agent in the baking process, which holds the cookie together and reduces spreading, leading to smaller diameter cookies. In contrast, butter serves as a source of fat, which melts at high temperatures and leads to increased spreading of baked cookies. Together, these ingredients have been known to interact during the baking process, where small granules of flour may be coated by the butter, forming heterogeneous pockets of both dry and fat-coated flour. In this way, butter and flour may neutralize each other in some respects, while cookie diameter increases with increased butter to flour ratio. 
