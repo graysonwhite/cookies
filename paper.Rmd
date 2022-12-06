@@ -4,6 +4,8 @@ subtitle: "STT 863 Fall 2022"
 author: "Benjamin Agyei, Christian Miller, Elliot Shannon, Grayson White"
 date: '2022-12-07'
 output: pdf_document
+bibliography: references.bib
+nocite: '@*'
 fontsize: 12pt
 geometry: margin=1in
 spacing: double
@@ -206,4 +208,5 @@ Although several steps were taken to hold uncontrolled variables constant, some 
 
 In this study, a controlled experiment was conducted to determine how factors such as amounts of flour and butter used, and baking time, affect the final diameter of baked cookies. We observed significant effects of flour and butter, along with their interaction effect, while baking time remained insignificant overall. Our study may have been limited by uncontrolled factors such as precise oven temperature and consistency in ingredient mixing methods, along with our limited ability to bake many batches of cookies of different factor levels. In the future, studies may emphasize a greater number of factor levels to better capture the relationship between baking methods and cookie diameter, as well as collect a greater number of samples to aid analysis. 
 
+\newpage
 ## References
