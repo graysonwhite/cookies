@@ -25,7 +25,7 @@ cookies <- readRDS("data/cookies.rds")
 
 ## Introduction
 
-Baking is one of the oldest known forms of preparing foods. As techniques and recipes evolved over the years, making baked goods has become as much of a science as it is an art.  The correct measurements of each ingredient that goes into a treat is very precise, and differing from the given instructions from a recipe can lead to drastic changes in the outcome of whatever is being prepared. This project aims to examine the effects that changing several parameters of a chocolate chip cookie recipe has on the diameter of the cookie using a linear regression model.
+Baking is one of the oldest known forms of preparing foods. As techniques and recipes evolved over the years, making baked goods has become as much of a science as it is an art. The correct measurements of each ingredient that goes into a baked good is very precise, and differing from the given instructions from a recipe can lead to drastic changes in the characteristics of the baked good that is being prepared. This project aims to examine the effects of changing several parameters of a chocolate chip cookie recipe has on the diameter of the cookie using a linear regression model.
 
 Most cookies have similar basic ingredients including flour, butter, brown or white sugar, among other ingredients that add flavor such as salt or extracts. The main objective of this project was to examine the impact that changing a recipe has on the diameter of the cookie. We hypothesize that the diameter of the cookie is mostly controlled by the amount of flour and butter, but they are also modified by other variables including baking time. To investigate the relationship between cookie diameter and varying a recipe, a linear regression model for the diameter of a finished cookie in terms of the amount of butter used, the amount of flour used, and the time spent in the oven was developed. The proposed model is:
 
@@ -44,12 +44,12 @@ Where $\epsilon$ is assumed to follow a normal distribution $N(0, \sigma^2)$, an
 	\item [$x_3$]:         Baking Time (minutes)
 \end{itemize}
 
-These ingredients were chosen as they were both essential ingredients for cookies that could influence cookie size. Baking time was also chosen to be investigated since cookies tend to get flatter as they cook. 
+These ingredients were chosen as they were both essential ingredients for cookies that could influence cookie size. Baking time was also chosen to be investigated since we believe that the cookies will tend to get flatter as they cook. 
 
 
 ## Methods
 
-In total, 18 batches of 3 cookies each were baked for this experiment; yielding a total of 54 cookies overall. For each batch, the baking time, along with the amounts of flour and butter used, were varied according to an experimental design outlined in Table 1. Other ingredients, including eggs, sugar, baking soda, etc., were held constant across batches. Additionally, variables such as oven temperature and oven placement were controlled across batches.  A digital scale was used to precisely measure the quantity of each ingredient (0.1 grams precision). The following recipe was used for this experiment:
+In order to understand the relationship between cookie diameter and flour, butter, and baking time and collect our data, we designed a controlled experiment. We baked cookies with varying levels of butter, flour, and baking time. In total, 18 batches of 3 cookies each were baked for this experiment; yielding a total of 54 cookies overall. For each batch, the baking time, along with the amounts of flour and butter used, were varied according to an experimental design outlined in Table 1. Notably, we baked cookies for two different baking times, three different amounts of butter, and three different amounts of flour. Other ingredients, including eggs, sugar, baking soda, etc., were held constant across batches. Additionally, variables such as oven temperature, cookie weight (20 grams/cookie dough ball), and oven placement were controlled across batches. A digital scale was used to precisely measure the quantity of each ingredient and the final weight of each cookie dough ball (0.1 grams precision). The following recipe was used for this experiment:
 
 \begin{itemize}
 	\setlength\itemsep{-0.1em}
@@ -64,16 +64,12 @@ In total, 18 batches of 3 cookies each were baked for this experiment; yielding 
 	\item 28, 42, or 56 grams butter
 \end{itemize}
 
-Cookies were baked at 350° F for 9 or 12 minutes on a nonstick cookie sheet. A digital timer was used to ensure that each batch of cookies was baked for the appropriate number of minutes.
-\newline
-
-**Table 1.** Experimental design.
+Cookies were baked at 350° F for 9 or 12 minutes on a nonstick cookie sheet. A digital timer was used to ensure that each batch of cookies was baked for the appropriate number of minutes. We varied the amount of flour (40-82 grams/batch) and butter (28-56 grams/batch) within what we believe to be a reasonable range of flour and butter to be used in a chocolate chip cookie. 
+\newpage
+\noindent \textbf{Table 1.} Experimental design.
 ```{r pressure, echo=FALSE, out.width = '50%', fig.align = "center"}
 knitr::include_graphics("table.png")
 ```
-
-\newpage
-
 ## Results
 
 Once we had baked and measured all of our cookies, it was time to begin modeling with our data. Before diving deep into modeling, we first took the important step of exploratory data analysis. To get a good sense of our data, we plotted each explanatory variable with the response variable. Figure 1 shows these relationships.
@@ -129,8 +125,6 @@ gglm(m1, theme = theme_bw()) +
 Figure 2 shows some departures from essential modeling conditions. Most notably, we see a U-shaped pattern in the residuals vs fitted plot. This violates the assumption that the error terms are independent of each other, and tells us that there is some curvature in some relationship between the response and an auxiliary variable that we are not accounting for in Model 1. Further, we see some higher leverage points with large residuals. These points could be highly influential in determining the model parameter estimates, and may be causing some bias in our model parameter estimates. Outside of these issues, the other model diagnostics look good for the initial candidate model. We also find that Model 1's model fit is quite good to begin with, with an $R^2$ value of `r round(summary(m1)$r.squared, 3)`. We find that for Model 1, all variables expect time in oven are significant at the 0.001 level, and time in oven is not significant at all. 
 
 We now move to attempting to fix the issues made apparent by the diagnostic plots, while maintaining good model fit. Largely, we had two approaches to addressing the diagnostic issues. Both approaches remove the time in oven variable as it was seen to not benefit the model, while adding the complexity of another variable. The first approach considers adding both a multiplicative interaction term between butter and flour, and a squared term for butter. We fit Model 2 as follows:
-
-\newpage
 
 \begin{equation}
 \tag{Model 2}
