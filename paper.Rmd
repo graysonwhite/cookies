@@ -21,6 +21,7 @@ cookies <- readRDS("data/cookies.rds")
 ```
 
 ## Introduction
+This is the intro.
 
 ## Methods
 
