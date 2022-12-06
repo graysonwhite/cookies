@@ -63,6 +63,12 @@ In total, 18 batches of 3 cookies each were baked for this experiment; yielding 
 \end{itemize}
 
 Cookies were baked at 350° F for 9 or 12 minutes on a nonstick cookie sheet. A digital timer was used to ensure that each batch of cookies was baked for the appropriate number of minutes.
+\newline
+
+**Table 1.** Experimental design.
+```{r pressure, echo=FALSE, out.width = '50%', fig.align = "center"}
+knitr::include_graphics("table.png")
+```
 
 \newpage
 
