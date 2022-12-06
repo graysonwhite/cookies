@@ -189,7 +189,7 @@ gglm(m3, theme = theme_bw()) +
 
 We see that any discernible pattern in the residual vs fitted plot is gone, and all other diagnostic plots look satisfactory. All variables included in Model 3 were significant at the 0.05 level, and the $R^2$ value for Model 3 is 0.937 with an adjusted $R^2$ of 0.932. These metrics tell us that the model fit is quite good. The estimated coefficient value for $\beta_6$ of `r round(coefficients(m3)[4], digits = 2)` seems reasonable, as cookie diameter is expected to increase as the ratio of butter to flour increases. Fitted coefficient values, standard errors, and model fit metrics for each candidate model are provided in Table 2. 
 \newpage
-\noindent \textbf{Table 2:} Model Fit Results for Models 1-3
+\noindent \textbf{Table 2.} Model Fit Results for Models 1-3
 \begin{table}[!htbp] \centering 
 \begin{tabular}{@{\extracolsep{5pt}}lccc} 
 \\[-1.8ex]\hline 
